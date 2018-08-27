@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+derelict-cufft.so
+derelict-cufft.dylib
+derelict-cufft.dll
+libderelict-cufft.a
+derelict-cufft.lib
+derelict-cufft-test-*
+*.exe
+*.o
+*.obj
+*.lst
+dub.selections.json

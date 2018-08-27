@@ -1,0 +1,6 @@
+name "derelict-cufft"
+description "A dynamic binding to the cuFFT API"
+authors "sobaya"
+copyright "Copyright © 2018, sobaya"
+license "Boost"
+dependency "derelict-util" version="~>2.1.0"
