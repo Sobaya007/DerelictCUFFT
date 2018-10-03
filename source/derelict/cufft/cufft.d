@@ -64,8 +64,8 @@ enum cufftType {
 extern(System) @nogc nothrow
 {
     alias da_cufftPlan1d = cufftResult function(cufftHandle*, int, cufftType, int);
-    alias da_cufftPlan2d = cufftResult function(cufftHandle*, int, int, cufftType, int);
-    alias da_cufftPlan3d = cufftResult function(cufftHandle*, int, int, int, cufftType, int);
+    alias da_cufftPlan2d = cufftResult function(cufftHandle*, int, int, cufftType);
+    alias da_cufftPlan3d = cufftResult function(cufftHandle*, int, int, int, cufftType);
     alias da_cufftDestroy = cufftResult function(cufftHandle);
     alias da_cufftExecC2C = cufftResult function(cufftHandle, cufftComplex*, cufftComplex*, int);
     alias da_cufftExecR2C = cufftResult function(cufftHandle, cufftReal*, cufftComplex*);
