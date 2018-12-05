@@ -274,9 +274,12 @@ extern(System) @nogc nothrow
         cufftResult function (cufftHandle plan,
                               cudaStream_t stream);
 
+    // This function was removed on CUDA 9.2
+    /*
     alias da_cufftSetCompatibilityMode =
         cufftResult function (cufftHandle plan,
                               cufftCompatibility mode);
+    */
 
     alias da_cufftDestroy =
         cufftResult function (cufftHandle plan);
@@ -320,7 +323,7 @@ __gshared
     da_cufftExecD2Z cufftExecD2Z;
     da_cufftExecZ2D cufftExecZ2D;
     da_cufftSetStream cufftSetStream;
-    da_cufftSetCompatibilityMode cufftSetCompatibilityMode;
+    //da_cufftSetCompatibilityMode cufftSetCompatibilityMode;
     da_cufftDestroy cufftDestroy;
     da_cufftGetVersion cufftGetVersion;
 
@@ -368,7 +371,7 @@ class DerelictCUFFTLoader : SharedLibLoader
             bindFunc(cast(void**)&cufftExecD2Z, "cufftExecD2Z");
             bindFunc(cast(void**)&cufftExecZ2D, "cufftExecZ2D");
             bindFunc(cast(void**)&cufftSetStream, "cufftSetStream");
-            bindFunc(cast(void**)&cufftSetCompatibilityMode, "cufftSetCompatibilityMode");
+            //bindFunc(cast(void**)&cufftSetCompatibilityMode, "cufftSetCompatibilityMode");
             bindFunc(cast(void**)&cufftDestroy, "cufftDestroy");
             bindFunc(cast(void**)&cufftGetVersion, "cufftGetVersion");
         }
