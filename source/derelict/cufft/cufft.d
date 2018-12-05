@@ -90,6 +90,7 @@ enum MAX_SHIM_RANK = 3;
 // cufftHandle is a handle type used to store and access CUFFT plans.
 alias cufftHandle = int;
 
+alias cudaStream_t = void*;
 
 extern(System) @nogc nothrow
 {
@@ -269,9 +270,9 @@ extern(System) @nogc nothrow
                                   
 
     // utility functions
-    //alias da_cufftSetStream = 
-    //    cufftResult function (cufftHandle plan,
-    //                          cudaStream_t stream);
+    alias da_cufftSetStream = 
+        cufftResult function (cufftHandle plan,
+                              cudaStream_t stream);
 
     alias da_cufftSetCompatibilityMode =
         cufftResult function (cufftHandle plan,
@@ -318,6 +319,7 @@ __gshared
     da_cufftExecZ2Z cufftExecZ2Z;
     da_cufftExecD2Z cufftExecD2Z;
     da_cufftExecZ2D cufftExecZ2D;
+    da_cufftSetStream cufftSetStream;
     da_cufftSetCompatibilityMode cufftSetCompatibilityMode;
     da_cufftDestroy cufftDestroy;
     da_cufftGetVersion cufftGetVersion;
@@ -365,6 +367,7 @@ class DerelictCUFFTLoader : SharedLibLoader
             bindFunc(cast(void**)&cufftExecZ2Z, "cufftExecZ2Z");
             bindFunc(cast(void**)&cufftExecD2Z, "cufftExecD2Z");
             bindFunc(cast(void**)&cufftExecZ2D, "cufftExecZ2D");
+            bindFunc(cast(void**)&cufftSetStream, "cufftSetStream");
             bindFunc(cast(void**)&cufftSetCompatibilityMode, "cufftSetCompatibilityMode");
             bindFunc(cast(void**)&cufftDestroy, "cufftDestroy");
             bindFunc(cast(void**)&cufftGetVersion, "cufftGetVersion");
